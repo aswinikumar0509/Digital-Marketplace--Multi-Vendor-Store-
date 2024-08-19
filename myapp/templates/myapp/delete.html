@@ -1,4 +1,4 @@
-{% extends 'myapp/base.html%}
+{% extends 'myapp/base.html' %}
 {% block body %}
 
 <div class="flex flex-col justify-center items-center min-h-screen">
@@ -6,7 +6,7 @@
     <form action="{% url 'delete' product.id%}" method="post">
         {% csrf_token %}
         <button class="bg-red-500 text-white px-4 py-2">Confirm</button>
-        <a  class="bg-green-500 text-white px-4 py-2"" href="{% url 'index' %}">No</a>
+        <a  class="bg-green-500 text-white px-4 py-2" href="{% url 'index' %}">No</a>
     </form>
 
 </div>

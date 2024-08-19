@@ -13,6 +13,7 @@ def detail(request,id):
     product=Product.objects.get(id=id)
     return render(request , 'myapp/detail.html',{'product':product})
 
+
 def create_product(request):
     if request.method =='POST':
         product_form = ProductForm(request.POST,request.FILES)
@@ -24,16 +25,14 @@ def create_product(request):
     product_form = ProductForm()
     return render(request , 'myapp/create_product.html',{'product_form':product_form})
 
-def product_edit(request):
+def product_edit(request,id):
     product = Product.objects.get(id=id)
-    product_form = ProductForm(request.POST or None, request.FILES or None, instance=product)
-
+    product_form = ProductForm(request.POST or None,request.FILES or None,instance=product)
     if request.method=='POST':
         if product_form.is_valid():
             product_form.save()
             return redirect('index')
-
-    return render(request , 'myapp/product_edit.html' , {'product_form':product_form})
+    return render(request,'myapp/product_edit.html',{'product_form':product_form,'product':product})
 
 def product_delete(request,id):
     product = Product.objects.get(id=id)
@@ -41,5 +40,9 @@ def product_delete(request,id):
         product.delete()
         return redirect('index')
 
-    return render(request,'myapp/delete.html')
+    return render(request,'myapp/delete.html',{'product':product})
+
+def dashboard(request):
+    products = Product.objects.all()
+    return render(request , 'myapp/dashboard.html',{'products':products})
 
