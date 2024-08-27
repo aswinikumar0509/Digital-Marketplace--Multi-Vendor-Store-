@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from .models import Product,OrderDetail
 from .forms import ProductForm,UserRegistrationForm
+from django.db.models import Sum
+import datetime
 
 # Create your views here.
 
@@ -66,3 +68,7 @@ def invalid(request):
 def my_purchases(request):
     orders = OrderDetail.objects.filter(customer_email = request.user.email)
     return render(request,'myapp/purchases.html',{'orders':orders})
+
+
+def sales(request):
+    return render(request,'myapp/sales.html')
