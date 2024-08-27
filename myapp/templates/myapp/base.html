@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -17,8 +18,8 @@
             </a>
 
             <div class="flex items-center">
-                <a href="dashboard/" class="mr-6 text-sm font-medium text-grey-500">Dashboard</a>
-                <a href="" class="mr-6 text-sm font-medium text-grey-500">Sales</a>
+                <a href="{% url 'dashboard'%}" class="mr-6 text-sm font-medium text-grey-500">Dashboard</a>
+                <a href="{% url 'sales'%}" class="mr-6 text-sm font-medium text-grey-500">Sales</a>
                 <a href="" class="mr-6 text-sm font-medium text-grey-500">Orders</a>
                 <a href="create_product/" class="mr-6 text-sm font-medium text-grey-500">Create Products</a>
                 <a href="{% url 'purchases' %}" class="mr-6 text-sm font-medium text-grey-500">My Purchases</a>
